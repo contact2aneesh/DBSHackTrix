@@ -3,10 +3,12 @@ package com.dbshacktrix.loan.model;
 import java.math.BigDecimal;
 
 import javax.persistence.Entity;
+import javax.persistence.Id;
 
 @Entity
 public class LOANPLAN {
 
+	@Id
 	private String planid;
 	private String description;
 	private BigDecimal slabs;
