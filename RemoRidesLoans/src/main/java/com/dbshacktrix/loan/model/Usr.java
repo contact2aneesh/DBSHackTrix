@@ -6,7 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 
 @Entity
-public class USRTXN {
+public class Usr {
 
 	@Id
 	private String txnid;

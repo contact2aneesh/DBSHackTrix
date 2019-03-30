@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class EmailService {
 	
-	public void sendmail() throws AddressException, MessagingException, IOException {
+	public void sendmail(String status) {
 		   Properties props = new Properties();
 		   props.put("mail.smtp.auth", "true");
 		   props.put("mail.smtp.starttls.enable", "true");
@@ -25,13 +25,18 @@ public class EmailService {
 		      }
 		   });
 		   Message msg = new MimeMessage(session);
-		   msg.setFrom(new InternetAddress("table10.dbshacktricks@gmail.com", false));
+		   try {
+			msg.setFrom(new InternetAddress("table10.dbshacktricks@gmail.com", false));
 
-		   msg.setRecipients(Message.RecipientType.TO, InternetAddress.parse("contact2aneesh@gmail.com"));
-		   msg.setSubject("Loan status changed");
-		   msg.setContent("Status changed for your loan request", "text/html");
-		   msg.setSentDate(new Date());
-		   
-		   Transport.send(msg);   
+			   msg.setRecipients(Message.RecipientType.TO, InternetAddress.parse("contact2aneesh@gmail.com"));
+			   msg.setSubject("Loan status changed to " + status);
+			   msg.setContent("Status changed for your loan request to " + status, "text/html");
+			   msg.setSentDate(new Date());
+			   
+			   Transport.send(msg);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}   
 		}
 }
