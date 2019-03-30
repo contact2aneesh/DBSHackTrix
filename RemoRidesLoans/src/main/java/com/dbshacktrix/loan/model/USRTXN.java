@@ -1,33 +1,34 @@
 package com.dbshacktrix.loan.model;
 
+import java.math.BigDecimal;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
 @Entity
-public class Usr {
+public class USRTXN {
 
 	@Id
-	private int id;
-	private String username;
-	private String password;
-	public int getId() {
-		return id;
+	private String txnid;
+	private int usrid;
+	private BigDecimal amount;
+	public String getTxnid() {
+		return txnid;
 	}
-	public void setId(int id) {
-		this.id = id;
+	public void setTxnid(String txnid) {
+		this.txnid = txnid;
 	}
-	public String getUsername() {
-		return username;
+	public int getUsrid() {
+		return usrid;
 	}
-	public void setUsername(String username) {
-		this.username = username;
+	public void setUsrid(int usrid) {
+		this.usrid = usrid;
 	}
-	public String getPassword() {
-		return password;
+	public BigDecimal getAmount() {
+		return amount;
 	}
-	public void setPassword(String password) {
-		this.password = password;
-	}
-	
+	public void setAmount(BigDecimal amount) {
+		this.amount = amount;
+	}	
 	
 }
